@@ -1,5 +1,6 @@
 *{
     font-weight: bold;
+    overflow: hidden;
 }
 
 body{
@@ -16,6 +17,7 @@ body{
 #main-screen{
     min-height: 30vh;
     flex-grow: 1;
+    font-size: 10vh;
 }
 
 .keys div{
@@ -28,7 +30,7 @@ body{
     min-height: 10vh;
 }
 
-.keys div:not(.red, .grey, .green):hover{
+.keys div:not(.red, .grey, .green, .orange):hover{
     background-color: lightskyblue;
 }
 
