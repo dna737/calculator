@@ -1,3 +1,7 @@
+*{
+    font-weight: bold;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -10,14 +14,12 @@ body{
 }
 
 #main-screen{
-    min-height: 20px;
+    min-height: 30vh;
     flex-grow: 1;
 }
 
 .keys div{
-    min-width: 400px;
     text-align: center;
-    /* min-height: 200px; */
     display: flex;
     justify-content: center;
     align-items: center;
