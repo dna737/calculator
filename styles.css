@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 97vh;
+}
+
+.keys{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#main-screen{
+    min-height: 20px;
+    flex-grow: 1;
+}
+
+.keys div{
+    min-width: 400px;
+    text-align: center;
+    /* min-height: 200px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 2px;
+    min-height: 10vh;
+}
+
+.keys div:not(.red, .grey, .green):hover{
+    background-color: lightskyblue;
+}
+
+.keys .red:hover{
+    background-color: red;
+}
+
+.keys .grey:hover{
+    background: grey;
+}
+
+.keys .green:hover{
+    background-color: greenyellow;
+}
+
+button{
+    display: inline-block;
+}
