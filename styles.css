@@ -44,6 +44,10 @@ body{
     background-color: greenyellow;
 }
 
+.keys .orange:hover{
+    background-color: orange;
+}
+
 .keys div:hover{
     transform: translateY(-3px);
 }

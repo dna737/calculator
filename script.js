@@ -28,3 +28,8 @@ function operate(number1, operator, number2){
     if(operator === "/") return divide(number1, number2);
 }
 
+const numbers = document.querySelectorAll('.keys div:not(.red, .grey, .green, .orange)');
+numbers.forEach(key => key.addEventListener('click', () => {
+    document.querySelector("#main-screen").textContent += key.textContent;
+}));
+
