@@ -22,7 +22,7 @@ body{
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    margin: 2px;
+    margin: 8px;
     min-height: 10vh;
 }
 
@@ -42,6 +42,13 @@ body{
     background-color: greenyellow;
 }
 
+.keys div:hover{
+    transform: translateY(-3px);
+}
+
+.keys div{
+    min-width: 23.7vw;
+}
 button{
     display: inline-block;
 }
