@@ -29,7 +29,15 @@ function operate(number1, operator, number2){
 }
 
 const numbers = document.querySelectorAll('.keys div:not(.red, .grey, .green, .orange)');
+const mainScreen = document.querySelector("#main-screen");
 numbers.forEach(key => key.addEventListener('click', () => {
-    document.querySelector("#main-screen").textContent += key.textContent;
+    if(mainScreen.textContent.length !== 12){
+    mainScreen.textContent += key.textContent;
+    }
 }));
+
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener('click', () =>{
+    mainScreen.textContent = "";
+});
 
