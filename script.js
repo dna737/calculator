@@ -31,8 +31,14 @@ function operate(number1, operator, number2){
 const numbers = document.querySelectorAll('.keys div:not(.red, .grey, .green, .orange)');
 const mainScreen = document.querySelector("#main-screen");
 numbers.forEach(key => key.addEventListener('click', () => {
+   
+
     if(mainScreen.textContent.length !== 12){
-    mainScreen.textContent += key.textContent;
+        if(mainScreen.textContent === "" && key.textContent === "0"){
+            mainScreen.textContent = "";
+        }else{
+        mainScreen.textContent += key.textContent;
+        }
     }
 }));
 
@@ -58,6 +64,40 @@ backSpace.addEventListener('click', () => {
     mainScreen.textContent = mainScreen.textContent.substring(0, mainScreen.textContent.length-1);
 });
 
+const symbols = document.querySelectorAll('.symbol');
+const calculation = document.querySelector('#calc-info');
+symbols.forEach(symbol => symbol.addEventListener('click', () =>{
+    if(mainScreen.textContent === ""){
+        calculation.textContent = "0" + symbol.textContent;
+    }
+
+    calculation.textContent = mainScreen.textContent + symbol.textContent;
+    mainScreen.textContent = "";
+}));
+
+const equals = document.querySelector('.result');
+equals.addEventListener('click', () =>{
+    if(calculation.textContent !== ""){
+
+    }
+});
+
+const allClear = document.querySelector('.all-clear');
+allClear.addEventListener('click',() => {
+    calculation.textContent = "";
+    mainScreen.textContent = "";
+});
+
+const negate = document.querySelector('.negate');
+negate.addEventListener('click', () =>{
+    if(mainScreen.textContent !== ""){
+        if(mainScreen.textContent.charAt(0) === "-"){
+            mainScreen.textContent = mainScreen.textContent.substring(1,mainScreen.textContent.length);
+        }else{
+            mainScreen.textContent = "-" + mainScreen.textContent;
+        }
+    }
+});
 
 
 
