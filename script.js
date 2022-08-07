@@ -41,3 +41,23 @@ clearButton.addEventListener('click', () =>{
     mainScreen.textContent = "";
 });
 
+const decimalPoint = document.querySelector(".decimal");
+decimalPoint.addEventListener('click', () => {
+    if(!mainScreen.textContent.includes(".")){
+        if(mainScreen.textContent.length === 0){
+            mainScreen.textContent += "0";
+        }
+        mainScreen.textContent += ".";
+    }else{
+        //implement this later. Animate it in such a way that it jiggles left and right and makes an error sound.
+    }
+});
+
+const backSpace = document.querySelector('.backspace');
+backSpace.addEventListener('click', () => {
+    mainScreen.textContent = mainScreen.textContent.substring(0, mainScreen.textContent.length-1);
+});
+
+
+
+

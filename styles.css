@@ -1,6 +1,5 @@
 *{
     font-weight: bold;
-    overflow: hidden;
 }
 
 body{
@@ -12,6 +11,8 @@ body{
 .keys{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 1;
 }
 
 #main-screen{
@@ -31,6 +32,7 @@ body{
     border: 1px solid black;
     margin: 8px;
     min-height: 10vh;
+    min-width: 19.5%;
 }
 
 .keys div:not(.red, .grey, .green, .orange):hover{
@@ -57,9 +59,7 @@ body{
     transform: translateY(-3px);
 }
 
-.keys div{
-    min-width: 23.7vw;
-}
 button{
     display: inline-block;
 }
+
