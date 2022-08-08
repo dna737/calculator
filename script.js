@@ -65,8 +65,12 @@ backSpace.addEventListener('click', () => {
 const symbols = document.querySelectorAll('.symbol');
 const calculation = document.querySelector('#calc-info');
 symbols.forEach(symbol => symbol.addEventListener('click', () =>{
-    if(mainScreen.textContent === ""){
+    if(mainScreen.textContent === "" && calculation.textContent === ""){
         calculation.textContent = "0" + symbol.textContent;
+    }
+
+    else if(calculation.textContent !== "" && mainScreen.textContent === ""){
+        calculation.textContent = calculation.textContent.substring(0, calculation.textContent.length-1) + symbol.textContent;
     }
     
     else if (calculation.textContent === ""){
