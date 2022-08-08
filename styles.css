@@ -34,6 +34,7 @@ body{
     margin: 8px;
     min-height: 10vh;
     min-width: 19.5%;
+    font-size: large;
 }
 
 .keys div:not(.red, .grey, .green, .orange):hover{
@@ -70,10 +71,19 @@ button{
     min-height: 15vh;
     display: flex;
     flex-direction: row-reverse;
+    font-size: 8vh;
 }
 
 .screen{
     display: flex;
     flex-direction: column;
-    margin-right: 10%;
+    margin: 1em;
+    border: 1px solid goldenrod;
+}
+
+.calculator{
+    width: 350px;
+    border: 1px solid red;
+    margin: 0 auto;
+    text-align: center;
 }

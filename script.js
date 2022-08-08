@@ -72,6 +72,12 @@ symbols.forEach(symbol => symbol.addEventListener('click', () =>{
     else if(calculation.textContent !== "" && mainScreen.textContent === ""){
         calculation.textContent = calculation.textContent.substring(0, calculation.textContent.length-1) + symbol.textContent;
     }
+
+    //special case of "-+" to avoid NaN cases:
+    else if(mainScreen.textContent === "-"){
+        calculation.textContent = "0" + symbol.textContent;
+        mainScreen.textContent = "";
+    }
     
     else if (calculation.textContent === ""){
     calculation.textContent = mainScreen.textContent + symbol.textContent;
@@ -88,6 +94,11 @@ const equals = document.querySelector('.result');
 equals.addEventListener('click', () =>{
     if(calculation.textContent !== "" && mainScreen.textContent !== ""){
         mainScreen.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent);
+        calculation.textContent = "";
+    }
+
+    if(calculation.textContent !== "" && mainScreen.textContent === ""){
+        mainScreen.textContent = calculation.textContent.substring(0, calculation.textContent.length-1);
         calculation.textContent = "";
     }
 });
