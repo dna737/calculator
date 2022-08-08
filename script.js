@@ -17,6 +17,7 @@ function multiply(number1, number2){
 }
 
 function divide(number1, number2){
+    if(number2 === "0") return "roflmao"
     return number1 / number2;
 }
 
@@ -34,7 +35,7 @@ numbers.forEach(key => key.addEventListener('click', () => {
    
 
     if(mainScreen.textContent.length !== 12){
-        if(mainScreen.textContent === "" && key.textContent === "0"){
+        if(mainScreen.textContent === "0" && key.textContent === "0"){
             mainScreen.textContent = "";
         }else{
         mainScreen.textContent += key.textContent;
@@ -42,10 +43,7 @@ numbers.forEach(key => key.addEventListener('click', () => {
     }
 }));
 
-const clearButton = document.querySelector(".clear");
-clearButton.addEventListener('click', () =>{
-    mainScreen.textContent = "";
-});
+
 
 const decimalPoint = document.querySelector(".decimal");
 decimalPoint.addEventListener('click', () => {
@@ -78,7 +76,7 @@ symbols.forEach(symbol => symbol.addEventListener('click', () =>{
 const equals = document.querySelector('.result');
 equals.addEventListener('click', () =>{
     if(calculation.textContent !== "" && mainScreen.textContent !== ""){
-        mainScreen.textContent = operate(calculation.textContent.substring(0,calculation.textContent.substring.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent);
+        mainScreen.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent);
         calculation.textContent = "";
     }
 });
@@ -99,6 +97,8 @@ negate.addEventListener('click', () =>{
         }
     }
 });
+
+
 
 
 
