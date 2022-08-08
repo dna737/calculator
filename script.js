@@ -36,9 +36,13 @@ numbers.forEach(key => key.addEventListener('click', () => {
 
     if(mainScreen.textContent.length !== 12){
         if(mainScreen.textContent === "0" && key.textContent === "0"){
-            mainScreen.textContent = "";
+            mainScreen.textContent += "";
         }else{
+            if(mainScreen.textContent === "0"){
+                mainScreen.textContent = key.textContent;
+            }else{
         mainScreen.textContent += key.textContent;
+            }
         }
     }
 }));
@@ -65,6 +69,7 @@ backSpace.addEventListener('click', () => {
 const symbols = document.querySelectorAll('.symbol');
 const calculation = document.querySelector('#calc-info');
 symbols.forEach(symbol => symbol.addEventListener('click', () =>{
+    let tempString = mainScreen.textContent;
     if(mainScreen.textContent === "" && calculation.textContent === ""){
         calculation.textContent = "0" + symbol.textContent;
     }
@@ -92,9 +97,10 @@ symbols.forEach(symbol => symbol.addEventListener('click', () =>{
 
 const equals = document.querySelector('.result');
 equals.addEventListener('click', () =>{
+    let tempString = mainScreen.textContent;
     if(calculation.textContent !== "" && mainScreen.textContent !== ""){
         mainScreen.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent);
-        calculation.textContent = "";
+        calculation.textContent += tempString + "=";
     }
 
     if(calculation.textContent !== "" && mainScreen.textContent === ""){
