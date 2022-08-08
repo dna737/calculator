@@ -41,7 +41,7 @@ numbers.forEach(key => key.addEventListener('click', () => {
             if(mainScreen.textContent === "0"){
                 mainScreen.textContent = key.textContent;
             }else{
-        mainScreen.textContent += key.textContent;
+                mainScreen.textContent += key.textContent;
             }
         }
     }
@@ -70,6 +70,7 @@ const symbols = document.querySelectorAll('.symbol');
 const calculation = document.querySelector('#calc-info');
 symbols.forEach(symbol => symbol.addEventListener('click', () =>{
     let tempString = mainScreen.textContent;
+    if(!calculation.textContent.includes("=")){
     if(mainScreen.textContent === "" && calculation.textContent === ""){
         calculation.textContent = "0" + symbol.textContent;
     }
@@ -93,19 +94,28 @@ symbols.forEach(symbol => symbol.addEventListener('click', () =>{
         calculation.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent) + symbol.textContent;
         mainScreen.textContent = "";
     }
+}else{
+    //this means that "=" is included in the calculation area.
+    calculation.textContent = mainScreen.textContent + symbol.textContent;
+    mainScreen.textContent = "";
+}
 }));
 
 const equals = document.querySelector('.result');
 equals.addEventListener('click', () =>{
     let tempString = mainScreen.textContent;
-    if(calculation.textContent !== "" && mainScreen.textContent !== ""){
+    if(calculation.textContent !== "" && mainScreen.textContent !== "" && !calculation.textContent.includes("=")){
         mainScreen.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent);
         calculation.textContent += tempString + "=";
     }
 
-    if(calculation.textContent !== "" && mainScreen.textContent === ""){
+    if(calculation.textContent !== "" && !calculation.textContent.includes("=") && mainScreen.textContent === ""){
         mainScreen.textContent = calculation.textContent.substring(0, calculation.textContent.length-1);
         calculation.textContent = "";
+    }
+
+    if(calculation.textContent.includes("=")){
+        mainScreen.textContent += "";
     }
 });
 
