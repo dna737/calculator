@@ -67,9 +67,16 @@ const calculation = document.querySelector('#calc-info');
 symbols.forEach(symbol => symbol.addEventListener('click', () =>{
     if(mainScreen.textContent === ""){
         calculation.textContent = "0" + symbol.textContent;
-    }else{
+    }
+    
+    else if (calculation.textContent === ""){
     calculation.textContent = mainScreen.textContent + symbol.textContent;
     mainScreen.textContent = "";
+    }
+
+    else if(calculation.textContent !== "" && mainScreen.textContent !== ""){
+        calculation.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent) + symbol.textContent;
+        mainScreen.textContent = "";
     }
 }));
 
