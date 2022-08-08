@@ -21,7 +21,7 @@ body{
     font-size: 4.3vh;
     display: flex;
     flex-direction: row-reverse;
-    overflow: hidden;
+    overflow: scroll;
     flex-shrink: 1;
 }
 
@@ -32,9 +32,11 @@ body{
     align-items: center;
     border: 1px solid black;
     margin: 8px;
-    min-height: 10vh;
+    min-height: 8vh;
     min-width: 19.5%;
     font-size: large;
+    border-radius: 30%;
+    box-shadow: 5px 5.6px;
 }
 
 .keys div:not(.red, .grey, .green, .orange):hover{
@@ -68,10 +70,12 @@ button{
 
 #calc-info{
     flex-grow: 2;
-    min-height: 15vh;
+    min-height: 12.23vh;
     display: flex;
     flex-direction: row-reverse;
-    font-size: 4.3vh;
+    font-size: 3vh;
+    flex-wrap: wrap;
+    overflow: scroll;
 }
 
 .screen{
@@ -83,7 +87,11 @@ button{
 
 .calculator{
     width: 350px;
-    border: 2px solid red;
+    border: 5px solid red;
+    border-radius: 3%;
     margin: 0 auto;
     text-align: center;
+    margin-top: 8vh;
+    background-color: whitesmoke;
+    padding: 2px;
 }

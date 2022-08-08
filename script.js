@@ -136,6 +136,20 @@ negate.addEventListener('click', () =>{
     }
 });
 
+const percentage = document.querySelector('.weird-symbol');
+percentage.addEventListener('click', () =>{
+    if(calculation.textContent !== "" && mainScreen.textContent !== ""){
+        let result = calculation.textContent.substring(0, calculation.textContent.length-1)/100;
+        result *= mainScreen.textContent;
+        mainScreen.textContent = operate(calculation.textContent.substring(0, calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),result);
+        calculation.textContent += result + "=";
+    }
+    else if(calculation.textContent === "" && mainScreen.textContent !== ""){
+        calculation.textContent = mainScreen.textContent + "%=";
+        mainScreen.textContent /= 100;
+    }
+});
+
 
 
 
