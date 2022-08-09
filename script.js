@@ -1,24 +1,36 @@
 function add(number1, number2){
     if(!number1) return number2;
     if(!number2) return number1;
-    return +number1 + +number2;
+    let string1 = number1.substring(number1.indexOf("."));
+    let string2 = number2.substring(number2.indexOf("."));
+    let maximum = Math.max(string1.length, string2.length);
+    return (+number1 + +number2).toFixed(maximum);
 }   
 
 function subtract(number1, number2){
     if(!number1) return number2;
     if(!number2) return number1;
-    return number1 - number2;
+    let string1 = number1.substring(number1.indexOf("."));
+    let string2 = number2.substring(number2.indexOf("."));
+    let maximum = Math.max(string1.length, string2.length);
+    return (number1 - number2).toFixed(maximum);
 }
 
 function multiply(number1, number2){
     if(!number1) return number2;
     if(!number2) return number1;
-    return +number1 * +number2;
+    let string1 = number1.substring(number1.indexOf("."));
+    let string2 = number2.substring(number2.indexOf("."));
+    let maximum = Math.max(string1.length, string2.length);
+    return (+number1 * +number2).toFixed(maximum);
 }
 
 function divide(number1, number2){
     if(number2 === "0") return "roflmao"
-    return number1 / number2;
+    let string1 = number1.substring(number1.indexOf("."));
+    let string2 = number2.substring(number2.indexOf("."));
+    let maximum = Math.max(string1.length, string2.length);
+    return (number1 / number2).toFixed(maximum);
 }
 
 function operate(number1, operator, number2){
