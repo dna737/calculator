@@ -4,7 +4,7 @@ function add(number1, number2){
     let string1 = number1.substring(number1.indexOf("."));
     let string2 = number2.substring(number2.indexOf("."));
     let maximum = Math.max(string1.length, string2.length);
-    return (+number1 + +number2).toFixed(maximum);
+    return (+number1 + +number2).toFixed(maximum-1);
 }   
 
 function subtract(number1, number2){
@@ -13,7 +13,7 @@ function subtract(number1, number2){
     let string1 = number1.substring(number1.indexOf("."));
     let string2 = number2.substring(number2.indexOf("."));
     let maximum = Math.max(string1.length, string2.length);
-    return (number1 - number2).toFixed(maximum);
+    return (number1 - number2).toFixed(maximum-1);
 }
 
 function multiply(number1, number2){
@@ -22,7 +22,7 @@ function multiply(number1, number2){
     let string1 = number1.substring(number1.indexOf("."));
     let string2 = number2.substring(number2.indexOf("."));
     let maximum = Math.max(string1.length, string2.length);
-    return (+number1 * +number2).toFixed(maximum);
+    return (+number1 * +number2).toFixed(maximum-1);
 }
 
 function divide(number1, number2){
@@ -30,7 +30,7 @@ function divide(number1, number2){
     let string1 = number1.substring(number1.indexOf("."));
     let string2 = number2.substring(number2.indexOf("."));
     let maximum = Math.max(string1.length, string2.length);
-    return (number1 / number2).toFixed(maximum);
+    return (number1 / number2).toFixed(maximum-1);
 }
 
 function operate(number1, operator, number2){
@@ -44,8 +44,6 @@ function operate(number1, operator, number2){
 const numbers = document.querySelectorAll('.keys div:not(.red, .grey, .green, .orange)');
 const mainScreen = document.querySelector("#main-screen");
 numbers.forEach(key => key.addEventListener('click', () => {
-   
-
     if(mainScreen.textContent.length !== 12){
         if(mainScreen.textContent === "0" && key.textContent === "0"){
             mainScreen.textContent += "";
@@ -59,7 +57,22 @@ numbers.forEach(key => key.addEventListener('click', () => {
     }
 }));
 
-
+//keyboard support for numbers:
+window.addEventListener('keydown', (event) => {
+    if(event.key === "0" || event.key === "1" || event.key === "2" || event.key === "3"|| event.key === "4"|| event.key === "5"|| event.key === "6"|| event.key === "7"|| event.key === "8"|| event.key === "9"){
+        if(mainScreen.textContent.length !== 12){
+            if(mainScreen.textContent === "0" && event.key === "0"){
+                mainScreen.textContent += "";
+            }else{
+                if(mainScreen.textContent === "0"){
+                    mainScreen.textContent = event.key;
+                }else{
+                    mainScreen.textContent += event.key;
+                }
+            }
+        }
+    }
+});
 
 const decimalPoint = document.querySelector(".decimal");
 decimalPoint.addEventListener('click', () => {
@@ -71,6 +84,18 @@ decimalPoint.addEventListener('click', () => {
     }else{
         //implement this later. Animate it in such a way that it jiggles left and right and makes an error sound.
     }
+});
+
+//keyboard support for decimal point:
+window.addEventListener('keydown', (event) =>{
+    if(event.key === "."){
+    if(!mainScreen.textContent.includes(".")){
+        if(mainScreen.textContent.length === 0){
+            mainScreen.textContent += "0";
+        }
+        mainScreen.textContent += ".";
+    }
+}
 });
 
 const backSpace = document.querySelector('.backspace');
@@ -112,6 +137,8 @@ symbols.forEach(symbol => symbol.addEventListener('click', () =>{
     mainScreen.textContent = "";
 }
 }));
+
+
 
 const equals = document.querySelector('.result');
 equals.addEventListener('click', () =>{
