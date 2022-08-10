@@ -60,17 +60,23 @@ numbers.forEach(key => key.addEventListener('click', () => {
 //keyboard support for numbers:
 window.addEventListener('keydown', (event) => {
     if(event.key === "0" || event.key === "1" || event.key === "2" || event.key === "3"|| event.key === "4"|| event.key === "5"|| event.key === "6"|| event.key === "7"|| event.key === "8"|| event.key === "9"){
-        if(mainScreen.textContent.length !== 12){
-            if(mainScreen.textContent === "0" && event.key === "0"){
-                mainScreen.textContent += "";
-            }else{
-                if(mainScreen.textContent === "0"){
-                    mainScreen.textContent = event.key;
-                }else{
-                    mainScreen.textContent += event.key;
+        const numbers = document.querySelectorAll('.keys div:not(.red, .grey, .green, .orange)');
+        numbers.forEach(number => {
+            if(event.key === number.textContent){
+                number.classList.toggle('toggled-numbers');
+                if(mainScreen.textContent.length !== 12){
+                    if(mainScreen.textContent === "0" && event.key === "0"){
+                        mainScreen.textContent += "";
+                    }else{
+                        if(mainScreen.textContent === "0"){
+                            mainScreen.textContent = event.key;
+                        }else{
+                            mainScreen.textContent += event.key;
+                        }
+                    }
                 }
             }
-        }
+        })
     }
 });
 

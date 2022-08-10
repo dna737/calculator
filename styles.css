@@ -95,3 +95,17 @@ button{
     background-color: whitesmoke;
     padding: 2px;
 }
+
+.toggled-numbers{
+   animation: numbers 0.1s;
+}
+
+@keyframes numbers {
+    0%{
+        background-color: white;
+    }
+
+    100%{
+        background-color: lightskyblue;
+    }
+}
