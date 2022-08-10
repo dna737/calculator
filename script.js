@@ -68,6 +68,7 @@ window.addEventListener('keydown', (event) => {
                     if(mainScreen.textContent === "0" && event.key === "0"){
                         mainScreen.textContent += "";
                     }else{
+                        number.classList.toggle('toggled-numbers');
                         if(mainScreen.textContent === "0"){
                             mainScreen.textContent = event.key;
                         }else{
