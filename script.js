@@ -199,6 +199,13 @@ backSpace.addEventListener('click', () => {
     mainScreen.textContent = mainScreen.textContent.substring(0, mainScreen.textContent.length-1);
 });
 
+//keyboard support for backspace:
+window.addEventListener('keydown', (event) =>{
+    if(event.key === "Backspace"){
+        mainScreen.textContent = mainScreen.textContent.substring(0, mainScreen.textContent.length-1);
+    }
+});
+
 const symbols = document.querySelectorAll('.symbol');
 const calculation = document.querySelector('#calc-info');
 symbols.forEach(symbol => symbol.addEventListener('click', () =>{
