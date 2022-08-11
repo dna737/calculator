@@ -81,7 +81,8 @@ window.addEventListener('keydown', (event) => {
                     }
                 }else{
                     number.classList.add("out-of-bounds");
-                    
+                    const audio = new Audio("./errorEffect");
+                    audio.play();
                     this.setTimeout(function (){number.classList.remove("out-of-bounds")}, 250)
                 }              
             }
