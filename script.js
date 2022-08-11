@@ -5,6 +5,35 @@ function add(number1, number2){
     let string2 = "";
 
     if(number1.includes(".")){
+         string1 = number1.substring(number1.indexOf("."));
+    }
+    if(number2.includes(".")){
+         string2 = number2.substring(number2.substring(number2.indexOf(".")));
+    }
+
+    //if both the numbers have a decimal point:
+    if(string1 && string2){
+        let maximum = Math.max(string1.length, string2.length);
+        return (+number1 + +number2).toFixed(maximum-1);
+    }
+
+    if(string1 && !string2){
+        return (+number1 + +number2).toFixed(string1.length-1);
+    }
+
+    if(!string1 && string2){
+        return (+number1 + +number2).toFixed(string2.length-1);        
+    }
+    return (+number1 + +number2);
+}   
+
+function subtract(number1, number2){
+    if(!number1) return number2;
+    if(!number2) return number1;
+    let string1 = "";
+    let string2 = "";
+
+    if(number1.includes(".")){
         string1 = number1.substring(number1.indexOf("."));
     }
     if(number2.includes(".")){
@@ -25,18 +54,16 @@ function add(number1, number2){
         return (number1 - number2).toFixed(string2.length-1);        
     }
 
-    
     return (number1 - number2);
-}   
+}
 
-function subtract(number1, number2){
+function multiply(number1, number2){
     if(!number1) return number2;
     if(!number2) return number1;
+    
     let string1 = "";
     let string2 = "";
-    if(number1.includes(".") || number2.includes(".")){
-
-    }
+    
     if(number1.includes(".")){
          string1 = number1.substring(number1.indexOf("."));
     }
@@ -47,34 +74,45 @@ function subtract(number1, number2){
     //if both the numbers have a decimal point:
     if(string1 && string2){
         let maximum = Math.max(string1.length, string2.length);
-        return (+number1 + +number2).toFixed(maximum-1);
+        return (+number1 * +number2).toFixed(maximum-1);
     }
 
     if(string1 && !string2){
-        return (+number1 + +number2).toFixed(string1.length-1);
+        return (+number1 * +number2).toFixed(string1.length-1);
     }
 
     if(!string1 && string2){
-        return (+number1 + +number2).toFixed(string2.length-1);        
+        return (+number1 * +number2).toFixed(string2.length-1);        
     }
-    return (number1 - number2);
-}
-
-function multiply(number1, number2){
-    if(!number1) return number2;
-    if(!number2) return number1;
-    let string1 = number1.substring(number1.indexOf("."));
-    let string2 = number2.substring(number2.indexOf("."));
-    let maximum = Math.max(string1.length, string2.length);
-    return (+number1 * +number2).toFixed(maximum-1);
+    return (+number1 * +number2);
 }
 
 function divide(number1, number2){
     if(number2 === "0") return "roflmao"
-    let string1 = number1.substring(number1.indexOf("."));
-    let string2 = number2.substring(number2.indexOf("."));
-    let maximum = Math.max(string1.length, string2.length);
-    return (number1 / number2).toFixed(maximum-1);
+    let string1 = "";
+    let string2 = "";
+    
+    if(number1.includes(".")){
+        string1 = number1.substring(number1.indexOf("."));
+    }
+    if(number2.includes(".")){
+        string2 = number2.substring(number2.substring(number2.indexOf(".")));
+    }
+
+    //if both the numbers have a decimal point:
+    if(string1 && string2){
+        let maximum = Math.max(string1.length, string2.length);
+        return (+number1 / +number2).toFixed(maximum-1);
+    }
+
+    if(string1 && !string2){
+        return (+number1 / +number2).toFixed(string1.length-1);
+    }
+
+    if(!string1 && string2){
+        return (+number1 / +number2).toFixed(string2.length-1);        
+    }
+    return (+number1 / +number2);
 }
 
 function operate(number1, operator, number2){
