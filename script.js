@@ -234,6 +234,43 @@ symbols.forEach(symbol => symbol.addEventListener('click', () =>{
 }
 }));
 
+//keyboard support for symbols:
+window.addEventListener('keydown', (event) =>{
+    let operator = event.key;
+    if(operator === "+" || operator === "-" || operator === "/" || operator === "*"){
+    let tempString = mainScreen.textContent;
+    if(!calculation.textContent.includes("=")){
+    if(mainScreen.textContent === "" && calculation.textContent === ""){
+        calculation.textContent = "0" + operator;
+    }
+
+    else if(calculation.textContent !== "" && mainScreen.textContent === ""){
+        calculation.textContent = calculation.textContent.substring(0, calculation.textContent.length-1) + operator;
+    }
+
+    //special case of "-+" to avoid NaN cases:
+    else if(mainScreen.textContent === "-"){
+        calculation.textContent = "0" + operator;
+        mainScreen.textContent = "";
+    }
+    
+    else if (calculation.textContent === ""){
+    calculation.textContent = mainScreen.textContent + operator;
+    mainScreen.textContent = "";
+    }
+
+    else if(calculation.textContent !== "" && mainScreen.textContent !== ""){
+        calculation.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent) + operator;
+        mainScreen.textContent = "";
+    }
+}else{
+    //this means that "=" is included in the calculation area.
+    calculation.textContent = mainScreen.textContent + operator;
+    mainScreen.textContent = "";
+}
+    }
+});
+
 
 
 const equals = document.querySelector('.result');
@@ -254,10 +291,38 @@ equals.addEventListener('click', () =>{
     }
 });
 
+//keyboard support for equals:
+window.addEventListener("keydown", (event) => {
+    if(event.key === "Enter"){
+    let tempString = mainScreen.textContent;
+    if(calculation.textContent !== "" && mainScreen.textContent !== "" && !calculation.textContent.includes("=")){
+        mainScreen.textContent = operate(calculation.textContent.substring(0,calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),mainScreen.textContent);
+        calculation.textContent += tempString + "=";
+    }
+
+    if(calculation.textContent !== "" && !calculation.textContent.includes("=") && mainScreen.textContent === ""){
+        mainScreen.textContent = calculation.textContent.substring(0, calculation.textContent.length-1);
+        calculation.textContent = "";
+    }
+
+    if(calculation.textContent.includes("=")){
+        mainScreen.textContent += "";
+    }
+}
+});
+
 const allClear = document.querySelector('.all-clear');
 allClear.addEventListener('click',() => {
     calculation.textContent = "";
     mainScreen.textContent = "";
+});
+
+// allClear for keyboard:
+window.addEventListener('keydown', (event) =>{
+ if(event.key === "Escape"){
+    calculation.textContent = "";
+    mainScreen.textContent = "";
+ }
 });
 
 const negate = document.querySelector('.negate');
@@ -284,6 +349,27 @@ percentage.addEventListener('click', () =>{
         mainScreen.textContent /= 100;
     }
 });
+
+//% for keyboard:
+window.addEventListener('keydown', (event) =>{
+    if(event.key === "%"){
+        if(calculation.textContent !== "" && mainScreen.textContent !== ""){
+            let result = calculation.textContent.substring(0, calculation.textContent.length-1)/100;
+            result *= mainScreen.textContent;
+            mainScreen.textContent = operate(calculation.textContent.substring(0, calculation.textContent.length-1), calculation.textContent.substring(calculation.textContent.length-1),result);
+            calculation.textContent += result + "=";
+        }
+        else if(calculation.textContent === "" && mainScreen.textContent !== ""){
+            calculation.textContent = mainScreen.textContent + "%=";
+            mainScreen.textContent /= 100;
+        }
+    }
+})
+
+window.addEventListener('keydown', (event) =>{
+    console.log(event.key);
+});
+
 
 
 
