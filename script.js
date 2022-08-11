@@ -336,6 +336,19 @@ negate.addEventListener('click', () =>{
     }
 });
 
+//keyboard support for negation:
+window.addEventListener("keydown", (event) => {
+    if(event.key === "_"){
+        if(mainScreen.textContent !== ""){
+            if(mainScreen.textContent.charAt(0) === "-"){
+                mainScreen.textContent = mainScreen.textContent.substring(1,mainScreen.textContent.length);
+            }else{
+                mainScreen.textContent = "-" + mainScreen.textContent;
+            }
+        }
+    }
+});
+
 const percentage = document.querySelector('.weird-symbol');
 percentage.addEventListener('click', () =>{
     if(calculation.textContent !== "" && mainScreen.textContent !== ""){
