@@ -123,17 +123,31 @@ button{
 @keyframes error{
     0%{
         background-color: yellow;
+        /* box-shadow: -2px 5.6px; */
+        margin-left: 0.4rem;
+        margin-right: 0.6rem;
     }
 
     33%{
-        background-color: orange;
+        background-color: rgb(255, 77, 0);
+        /* box-shadow: -4px 5.6px; */
+        margin-right: 0.4rem;
+        margin-left: 0.6rem;
     }
 
     88%{
+        background-color: red;
+        /* box-shadow: 2px 5.6px; */
+        /* margin-left: -0.1em; */
+        /* margin-right: auto; */
+    }
+
+    90%{
         background-color: red;
     }
 
     100%{
         background-color: white;
+        /* box-shadow: 5px 5.6px; */    
     }
 }

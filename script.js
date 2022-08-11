@@ -81,6 +81,8 @@ window.addEventListener('keydown', (event) => {
                     }
                 }else{
                     number.classList.add("out-of-bounds");
+                    
+                    this.setTimeout(function (){number.classList.remove("out-of-bounds")}, 250)
                 }              
             }
         })
