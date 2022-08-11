@@ -63,19 +63,25 @@ window.addEventListener('keydown', (event) => {
         const numbers = document.querySelectorAll('.keys div:not(.red, .grey, .green, .orange)');
         numbers.forEach(number => {
             if(event.key === number.textContent){
-                number.classList.toggle('toggled-numbers');
                 if(mainScreen.textContent.length !== 12){
+                    number.classList.add("toggled-numbers");                
                     if(mainScreen.textContent === "0" && event.key === "0"){
                         mainScreen.textContent += "";
+                        this.setTimeout(function() {number.classList.remove("toggled-numbers")}, 250)
                     }else{
-                        number.classList.toggle('toggled-numbers');
                         if(mainScreen.textContent === "0"){
                             mainScreen.textContent = event.key;
+                            this.setTimeout(function() {number.classList.remove("toggled-numbers")}, 250)
+
                         }else{
                             mainScreen.textContent += event.key;
+                            this.setTimeout(function() {number.classList.remove("toggled-numbers")}, 250)
+
                         }
                     }
-                }
+                }else{
+                    number.classList.add("out-of-bounds");
+                }              
             }
         })
     }

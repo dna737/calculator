@@ -61,7 +61,7 @@ body{
 
 .keys div:hover{
     transform: translateY(-3px);
-    cursor: pointer;
+        cursor: pointer;
 
 }
 
@@ -99,7 +99,11 @@ button{
 }
 
 .toggled-numbers{
-   animation: numbers 0.1s;
+   animation: numbers 0.3s;
+}
+
+.out-of-bounds{
+    animation: error 0.3s;
 }
 
 @keyframes numbers {
@@ -107,7 +111,29 @@ button{
         background-color: white;
     }
 
-    100%{
+    50%{
         background-color: lightskyblue;
+    }
+
+    100%{
+        background-color: white;
+    }
+}
+
+@keyframes error{
+    0%{
+        background-color: yellow;
+    }
+
+    33%{
+        background-color: orange;
+    }
+
+    88%{
+        background-color: red;
+    }
+
+    100%{
+        background-color: white;
     }
 }
